@@ -24,6 +24,7 @@ const UNPROXYABLE_COMMANDS = new Set([
   "then",
   "elif",
   "else",
+  "do",
   "done",
 ]);
 const OPERATOR_RE = /(\s*(?:&&|\|\||;)\s*|\s&\s?)/;
