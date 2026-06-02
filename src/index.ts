@@ -61,7 +61,13 @@ function snipCommand(command: string): string {
 
 function alreadyWrapped(command: string): boolean {
   const segments = command.split(OPERATOR_RE);
-  return segments.some((s) => s.trimStart().startsWith("snip "));
+  return segments.some((s) => {
+    const trimmed = s.trimStart();
+    return (
+      trimmed.startsWith("snip ") ||
+      trimmed.replace(ENV_VAR_RE, "").startsWith("snip ")
+    );
+  });
 }
 
 export const toolExecuteBefore: NonNullable<
